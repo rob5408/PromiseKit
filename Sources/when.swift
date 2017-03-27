@@ -111,6 +111,16 @@ public func when<U, V, W, X, Y>(fulfilled pu: Promise<U>, _ pv: Promise<V>, _ pw
     return _when([pu.asVoid(), pv.asVoid(), pw.asVoid(), px.asVoid(), py.asVoid()]).then(on: zalgo) { (pu.value!, pv.value!, pw.value!, px.value!, py.value!) }
 }
 
+/// Wait for all promises in a set to fulfill.
+public func when<U, V, W, X, Y, Z>(fulfilled pu: Promise<U>, _ pv: Promise<V>, _ pw: Promise<W>, _ px: Promise<X>, _ py: Promise<Y>, _ pz: Promise<Z>) -> Promise<(U, V, W, X, Y, Z)> {
+    return _when([pu.asVoid(), pv.asVoid(), pw.asVoid(), px.asVoid(), py.asVoid(), pz.asVoid()]).then(on: zalgo) { (pu.value!, pv.value!, pw.value!, px.value!, py.value!, pz.value!) }
+}
+
+/// Wait for all promises in a set to fulfill.
+public func when<T, U, V, W, X, Y, Z>(fulfilled pt: Promise<T>, _ pu: Promise<U>, _ pv: Promise<V>, _ pw: Promise<W>, _ px: Promise<X>, _ py: Promise<Y>, _ pz: Promise<Z>) -> Promise<(T, U, V, W, X, Y, Z)> {
+    return _when([pt.asVoid(), pu.asVoid(), pv.asVoid(), pw.asVoid(), px.asVoid(), py.asVoid(), pz.asVoid()]).then(on: zalgo) { (pt.value!, pu.value!, pv.value!, pw.value!, px.value!, py.value!, pz.value!) }
+}
+
 /**
  Generate promises at a limited rate and wait for all to fulfill.
 
