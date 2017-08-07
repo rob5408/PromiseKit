@@ -35,7 +35,7 @@ In your [Podfile]:
 
 ```ruby
 use_frameworks!
-pod "PromiseKit", "~> 4.4"
+pod "PromiseKit", "~> 5.0"
 ```
 
 PromiseKit 4 supports Xcode 8.1, 8.2, 8.3 and 9.0; Swift 3.0, 3.1, 3.2 and 4.0; iOS, macOS, tvOS, watchOS and Linux; CocoaPods, Carthage and SwiftPM; ([CI Matrix](https://travis-ci.org/mxcl/PromiseKit)).
@@ -61,13 +61,13 @@ If you are looking for a function’s documentation, then please note
 # Extensions
 
 Promises are only as useful as the asynchronous tasks they represent, thus we
-have converted (almost) all of Apple’s APIs to promises. The default CocoaPod
-comes with promises for UIKit and Foundation, the rest can be installed by
-specifying additional subspecs in your `Podfile`, eg:
+have converted (almost) all of Apple’s APIs to promises. By default PromiseKit
+only provides promises, the extensions are available by specifying additional
+subspecs in your `Podfile`, eg:
 
 ```ruby
-pod "PromiseKit/MapKit"          # MKDirections().promise().then { /*…*/ }
-pod "PromiseKit/CoreLocation"    # CLLocationManager.promise().then { /*…*/ }
+pod "PromiseKit/MapKit"          # MKDirections().calculate().then { /*…*/ }
+pod "PromiseKit/CoreLocation"    # CLLocationManager.requestLocation().then { /*…*/ }
 ```
 
 All our extensions are separate repositories at the [PromiseKit organization].
@@ -104,7 +104,7 @@ URLSession.shared.dataTask(url).asDictionary().then { json in
 ```
 
 Nobody ever got fired for using Alamofire, but at the end of the day, it’s
-just a small wrapper around `NSURLSession`. OMGHTTPURLRQ supplements
+just a wrapper around `NSURLSession`. OMGHTTPURLRQ supplements
 `NSURLRequest` to make generating REST style requests easier, and the PromiseKit
 extensions extend `NSURLSession` to make OMG usage more convenient. But since a
 while now most servers accept JSON, so writing a simple API class that uses
